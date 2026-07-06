@@ -1,5 +1,9 @@
 # Automated OpenFOAM VOF Simulation and Surrogate Modelling of Dam-Break Impact Loads on an Obstacle
 
+[![CI](https://github.com/ThomasBainbridge/dambreak-surrogate/actions/workflows/ci.yml/badge.svg)](https://github.com/ThomasBainbridge/dambreak-surrogate/actions/workflows/ci.yml)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 ![CFD vs POD surrogate free-surface reconstruction](results/final_project_outputs/gifs/FINAL_cfd_vs_pod_surrogate_alpha_field.gif)
 
 A CFD and data-driven surrogate modelling study. Starting from the standard OpenFOAM `interFoam` laminar dam-break tutorial, this project builds a fully automated 403-case 2-D VOF simulation database, extracts robust impact-pressure and wetting metrics, trains scalar surrogate models for design-space exploration, and develops a POD reduced-order field surrogate for free-surface reconstruction on unseen validation cases.
