@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it."
+title: "Automated OpenFOAM VOF Simulation and Surrogate Modelling of Dam-Break Impact Loads on an Obstacle"
+authors:
+  - family-names: Bainbridge
+    given-names: Thomas
+type: software
+license: MIT
+repository-code: "https://github.com/ThomasBainbridge/dambreak-surrogate"
+keywords:
+  - computational fluid dynamics
+  - OpenFOAM
+  - volume of fluid
+  - dam break
+  - surrogate modelling
+  - proper orthogonal decomposition
+abstract: >
+  An automated 403-case OpenFOAM interFoam (VOF) database of dam-break surges
+  striking an obstacle, varying the water-column height and the obstacle's
+  height and position. Robust impact metrics are extracted from every run.
+  Scalar surrogates and a POD field surrogate for the free surface are trained
+  on a 343-case grid and validated on 60 off-grid geometries, showing which
+  impact loads a surrogate can predict and which it cannot.
