@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
+#
+# Run every generated case (blockMesh -> checkMesh -> setFields -> interFoam),
+# skipping cases already marked completed, and collect a master status CSV.
+# Override the OpenFOAM environment with e.g.
+#   OPENFOAM_BASHRC=/opt/openfoam2312/etc/bashrc scripts/run_surrogate_database_all.sh
 
-PROJECT_ROOT="/mnt/c/Users/thoma/Desktop/damBreak_interFoam_laminar"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OPENFOAM_BASHRC="${OPENFOAM_BASHRC:-/usr/lib/openfoam/openfoam2312/etc/bashrc}"
 CASE_ROOT="$PROJECT_ROOT/parametric_study/surrogate_database_cases"
 METADATA_FILE="$CASE_ROOT/surrogate_case_metadata.csv"
 
@@ -11,7 +17,7 @@ RUN_LOG_DIR="$RESULTS_ROOT/run_logs"
 MASTER_STATUS="$RESULTS_ROOT/surrogate_database_run_status.csv"
 PROGRESS_LOG="$RESULTS_ROOT/surrogate_database_progress.log"
 
-source /usr/lib/openfoam/openfoam2312/etc/bashrc
+source "$OPENFOAM_BASHRC"
 
 mkdir -p "$RESULTS_ROOT"
 mkdir -p "$STATUS_DIR"

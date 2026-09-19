@@ -1,0 +1,5 @@
+#!/bin/sh
+# Remove everything Allrun generates, leaving only the case definition.
+cd "${0%/*}" || exit 1
+
+rm -rf 0 [1-9]* 0.[0-9]* constant/polyMesh postProcessing log.*

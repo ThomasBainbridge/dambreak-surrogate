@@ -18,8 +18,10 @@ DESIGN_CSV = (
 
 PARAMETRIC_ROOT = PROJECT_ROOT / "parametric_study"
 
-# Use the already-corrected high-time full-duration setup as the template.
-BASE_SETUP = PARAMETRIC_ROOT / "matrix_high_time_1p5" / "highTime1p5_H0292_obsH0048_x0292"
+# Base OpenFOAM case (H = 0.292 m, h = 0.048 m, x = 0.292 m, 1.5 s run with
+# the obstacle pressure function objects). Each generated case copies it and
+# rewrites blockMeshDict, setFieldsDict and the controlDict timing.
+BASE_SETUP = PROJECT_ROOT / "cases" / "damBreak_template"
 
 OUTPUT_ROOT = PARAMETRIC_ROOT / "surrogate_database_cases"
 
@@ -529,7 +531,7 @@ def write_global_metadata(cases: list[SurrogateCase]) -> None:
 
 def main() -> None:
     if not BASE_SETUP.exists():
-        raise FileNotFoundError(f"High-time base setup not found: {BASE_SETUP}")
+        raise FileNotFoundError(f"Base OpenFOAM case not found: {BASE_SETUP}")
 
     cases = read_design_csv(DESIGN_CSV)
 

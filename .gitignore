@@ -1,18 +1,32 @@
 # Large simulation database (~27 GB) - do not commit
 parametric_study/surrogate_database_cases/
 
+# Outputs of running the template case in place
+cases/*/0/
+cases/*/[1-9]*/
+cases/*/0.[0-9]*/
+cases/*/constant/polyMesh/
+cases/*/postProcessing/
+cases/*/log.*
+
 # Large field snapshot memmap and trained model binaries
 results/surrogate_database/field_surrogate/alpha_snapshots_float32.dat
 *.joblib
 
-# Intermediate working media (final curated outputs are in results/final_project_outputs/)
+# Intermediate working media (curated figures and GIFs live in docs/)
 results/surrogate_database/portfolio_media/
 
-# Python cache
+# Presentation working files
+*.pptx
+
+# Python cache and environments
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.pytest_cache/
+.venv/
+venv/
 
 # OS artefacts
 .DS_Store

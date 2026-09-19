@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import gzip
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -15,6 +16,11 @@ import numpy as np
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# OpenFOAM environment, used only to write missing cell-centre fields.
+OPENFOAM_BASHRC = os.environ.get(
+    "OPENFOAM_BASHRC", "/usr/lib/openfoam/openfoam2312/etc/bashrc"
+)
 
 CASE_ROOT = PROJECT_ROOT / "parametric_study" / "surrogate_database_cases"
 
@@ -125,7 +131,7 @@ def ensure_cell_centres(case_dir: Path) -> Path:
         return existing_gz[0]
 
     command = (
-        "source /usr/lib/openfoam/openfoam2312/etc/bashrc && "
+        f"source '{OPENFOAM_BASHRC}' && "
         f"cd '{case_dir}' && "
         "postProcess -func writeCellCentres -time 0 > log.writeCellCentres 2>&1"
     )

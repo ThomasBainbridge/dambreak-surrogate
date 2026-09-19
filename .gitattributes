@@ -1,0 +1,7 @@
+# Shell scripts and OpenFOAM dictionaries are run from WSL/Linux: keep LF.
+*.sh             text eol=lf
+cases/**         text eol=lf
+
+# Binary media
+*.png            binary
+*.gif            binary
