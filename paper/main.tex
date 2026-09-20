@@ -1,36 +1,37 @@
 %% Automated VOF Simulation and Surrogate Modelling of Dam-Break Impact Loads
-%% Build with latexmk -pdf main.tex, or press F5 in TeXstudio.
+%% Elsevier preprint layout. Build with latexmk -pdf main.tex, or F5 in TeXstudio.
 %% \graphicspath is set to ../docs/figures, so \includegraphics{name.png}
 %% finds the project figures without a path.
 
-\documentclass[conference,a4paper]{IEEEtran}
+\documentclass[preprint,a4paper,12pt]{elsarticle}
 
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage[hidelinks]{hyperref}
-\usepackage{cite}
 
 \graphicspath{{../docs/figures/}}
 
 \begin{document}
 
-\title{Automated VOF Simulation and Surrogate Modelling\\of Dam-Break Impact Loads on an Obstacle}
+\begin{frontmatter}
 
-\author{\IEEEauthorblockN{Thomas Bainbridge}
-\IEEEauthorblockA{Cranfield University \\
-\texttt{tb.engineering.uk@gmail.com}}}
+\title{Automated VOF Simulation and Surrogate Modelling of Dam-Break Impact Loads on an Obstacle}
 
-\maketitle
+\author{Thomas Bainbridge}
+\ead{tb.engineering.uk@gmail.com}
+\affiliation{organization={Cranfield University}, country={United Kingdom}}
 
 \begin{abstract}
 
 \end{abstract}
 
-\begin{IEEEkeywords}
+\begin{keyword}
 
-\end{IEEEkeywords}
+\end{keyword}
+
+\end{frontmatter}
 
 \section{Introduction}
 
@@ -50,7 +51,7 @@
 
 % refs.bib already holds the Brackbill (1992) surface-tension reference.
 % Uncomment once you \cite it:
-%\bibliographystyle{IEEEtran}
+%\bibliographystyle{elsarticle-num}
 %\bibliography{refs}
 
 \end{document}
