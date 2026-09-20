@@ -1,0 +1,114 @@
+%% Dam-Break Impact Loads: CFD Database and Surrogate Models
+%% Skeleton for a short (4-6 page) two-column paper. Build with latexmk -pdf main.tex
+%% or press F5 in TeXstudio. Figures are pulled from ../docs/figures.
+
+\documentclass[conference,a4paper]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+
+\graphicspath{{../docs/figures/}}
+
+\begin{document}
+
+\title{Automated VOF Simulation and Surrogate Modelling\\of Dam-Break Impact Loads on an Obstacle}
+
+\author{\IEEEauthorblockN{Thomas Bainbridge}
+\IEEEauthorblockA{% affiliation
+Cranfield University \\
+\texttt{tb.engineering.uk@gmail.com}}}
+
+\maketitle
+
+\begin{abstract}
+% One paragraph: the load-prediction problem, the automated database, which
+% impact metrics a surrogate can predict and which it cannot, and the field
+% surrogate. Write last.
+\end{abstract}
+
+\begin{IEEEkeywords}
+volume of fluid, dam break, impact loads, surrogate modelling,
+proper orthogonal decomposition, OpenFOAM
+\end{IEEEkeywords}
+
+\section{Introduction}
+% Why transient impact loads are expensive to compute; what a designer actually
+% needs; what this study asks of a surrogate.
+
+\section{Physical Model and CFD Setup}
+% Two-phase VOF with interFoam; laminar, 2-D; the domain, obstacle and mesh;
+% the function objects recording obstacle pressure.
+\begin{equation}
+  \frac{\partial \alpha}{\partial t} + \nabla\cdot(\alpha\mathbf{U})
+  + \nabla\cdot\big[\alpha(1-\alpha)\mathbf{U}_r\big] = 0 .
+  \label{eq:vof}
+\end{equation}
+
+\section{Design of Experiments}
+% Three geometric parameters; the 7x7x7 training grid; the off-grid Latin
+% hypercube validation set; how cases are generated from one template.
+
+\begin{table}[t]
+  \centering
+  \caption{% TODO
+  Parameter ranges and the design split.}
+  \label{tab:doe}
+  \begin{tabular}{lcc}
+    \toprule
+    Parameter & Symbol & Range \\
+    \midrule
+    Water-column height & $H$ &  \\
+    Obstacle height & $h$ &  \\
+    Obstacle front position & $x$ &  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Impact Metrics}
+% Area-average and local-maximum pressure histories; rolling-window peaks,
+% top-fraction means, impulses and wetting time; why the raw single-sample peak
+% is not used as a target.
+
+\section{Scalar Surrogates}
+% Ten model families on raw and log-transformed targets; selection by validation
+% nRMSE; which targets are predictable and which are not.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{final_selected_surrogate_validation_r2.png}
+  \caption{% TODO
+  Validation $R^2$ of the selected surrogate for each impact target.}
+  \label{fig:scalar}
+\end{figure}
+
+\section{POD Field Surrogate}
+% Snapshot assembly on a common grid; the 200-mode basis; per-time-slice
+% coefficient regression; where the reconstruction error concentrates.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{pod_field_surrogate_error_over_time.png}
+  \caption{% TODO
+  Field reconstruction error through the impact event.}
+  \label{fig:pod}
+\end{figure}
+
+\section{Limitations}
+% 2-D and laminar; model selection on the validation set; three inputs only;
+% the linear basis at a sharp moving interface.
+
+\section{Conclusions}
+% What a reader should take away, in three or four sentences.
+
+% \nocite{*} lists every refs.bib entry even before it is cited in the text.
+% Delete this line once you are citing entries properly.
+\nocite{*}
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}
